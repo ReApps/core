@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router';
 import App from './Components/App';
-import ListApp from './Components/ListApp';
+import AppList from './Components/AppList';
+import AppView from './Components/AppView';
 
 export default () => (
   <App>
     <Switch>
-      <Route path="/" component={ListApp} />
+        <Route path="/" component={AppList} exact />
+        <Route path="/:appCode" component={AppView} />
     </Switch>
   </App>
 );

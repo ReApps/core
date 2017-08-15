@@ -1,14 +1,15 @@
 import * as React from 'react';
 import InstallBtn from './install-btn';
-import AppList from './ListApp';
 
 export default class extends React.Component<undefined, undefined> {
   render() {
+      const {children} = this.props;
+
     return (
       <div>
         <InstallBtn/>
         <hr/>
-        <AppList/>
+        {children}
       </div>
     );
   }
