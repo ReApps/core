@@ -28,10 +28,7 @@ module.exports = function (entry, cb) {
     compiler.run((err, stats) => {
         // Вывод ошибок/статистики
         err && console.error(err);
-        console.info(stats);
-
-        // Сохранение в персистентный стораж
-        localStorage.fs = JSON.stringify(fs);
+        // console.info(stats);
         cb(fs.data.apps);
     });
 };
