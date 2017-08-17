@@ -13,7 +13,7 @@ class AppView extends React.Component<undefined, undefined> {
     }
 }
 
-function compile (Buffer) {
+export function compile (Buffer) {
     const code = Buffer.toString();
     return VM.runInThisContext(code).default;
 }

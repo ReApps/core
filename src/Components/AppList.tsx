@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import {compile} from './AppView';
 const {Link} = require('react-router-dom');
 
 class AppList extends React.Component<undefined, undefined> {
@@ -11,12 +12,16 @@ class AppList extends React.Component<undefined, undefined> {
                 {Object
                     .keys(apps)
                     .filter(Boolean)
-                    .map(appName =>  (
-                            <li key={appName}>
-                                <Link to={`/${appName}`}>{appName}</Link>
+                    .map(appHash => {
+                        const appInstance = compile(apps[appHash]);
+                        const appName = appInstance.name;
+
+                        return (
+                            <li key={appHash}>
+                                <Link to={`/${appHash}`}>{appName}</Link>
                             </li>
                         )
-                    )
+                    })
                 }
             </ul>
         );
