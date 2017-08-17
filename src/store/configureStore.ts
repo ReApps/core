@@ -15,7 +15,7 @@ const enhancer = applyMiddleware(
     localStorageMiddleware,
 );
 
-const savedState = JSONB.parse(localStorage.appState);
+const savedState = JSONB.parse(localStorage.appState || '{}');
 
 export function configureStore(initialState = savedState) {
     return createStore(rootReducer, initialState, enhancer);

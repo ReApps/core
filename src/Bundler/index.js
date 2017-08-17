@@ -6,7 +6,8 @@ module.exports = function (entry, cb) {
     const compiler = webpack({
         entry,
         output: {
-            path: '/apps'
+            path: '/apps',
+            filename : "[chunkhash]"
         },
         module: {
             rules: [

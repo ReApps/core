@@ -24,7 +24,9 @@ class AppList extends React.Component<undefined, undefined> {
 }
 
 function mapStateToProps({core}) {
-    return {...core};
+    return {
+        apps: {...core.apps}
+    };
 }
 
 export default connect(mapStateToProps)(AppList);
