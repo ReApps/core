@@ -2,17 +2,19 @@ import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 const {dialog} = require('electron').remote;
+const { Button } = require('react-desktop/macOs');
 import * as actions from '../Actions';
 
 const InstallBtn = ({install}) => (
-  <button
-    onClick={() => {
-        const files = dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']})
-        install(files[0]);
-    }}
-  >
-    Установить
-  </button>
+    <Button
+        color="blue"
+        onClick={() => {
+            const files = dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']})
+            files[0] && install(files[0]);
+        }}
+    >
+        Установить
+    </Button>
 );
 
 function mapDispatchToProps(dispatch) {
