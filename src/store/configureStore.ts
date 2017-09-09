@@ -5,11 +5,13 @@ import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../reducers';
 import localStorageMiddleware from './localstorage-middleware';
 const JSONB = require('json-buffer');
+const dynamicMiddlewares = require('redux-dynamic-middlewares').default;
 
 export const history = createHashHistory();
 const router = routerMiddleware(history);
 
 const enhancer = applyMiddleware(
+    dynamicMiddlewares,
     thunk,
     router,
     localStorageMiddleware,
