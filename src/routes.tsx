@@ -8,7 +8,7 @@ export default () => (
   <App>
     <Switch>
         <Route path="/" component={AppList} exact />
-        <Route path="/:appCode" component={AppView} />
+        <Route path="/:appHash" component={AppView} />
     </Switch>
   </App>
 );

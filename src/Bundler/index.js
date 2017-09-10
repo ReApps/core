@@ -27,9 +27,19 @@ module.exports = function (entry, cb) {
 
     compiler.outputFileSystem = fs;
     compiler.run((err, stats) => {
-        // Вывод ошибок/статистики
-        err && console.error(err);
-        // console.info(stats);
-        cb(fs.data.apps);
+        if (err) return console.error(err);
+
+        /** Сохраняем сорцы в стораж */
+        const {apps} = fs.data;
+        Object
+            .keys(apps)
+            .forEach(appHash => {
+                if (!appHash) return;
+
+                apps[appHash] = apps[appHash].toString();
+            });
+        localStorage['apps'] = JSON.stringify(apps);
+
+        cb(apps);
     });
 };

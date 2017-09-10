@@ -11,7 +11,7 @@ export default class extends React.Component<undefined, undefined> {
       <div>
           <Switch>
               <Route path="/" component={InstallBtn} exact />
-              <Route path="/:appCode" component={BackLink} />
+              <Route path="/:appHash" component={BackLink} />
           </Switch>
         <hr/>
         {children}
