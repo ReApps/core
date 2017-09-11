@@ -30,15 +30,14 @@ module.exports = function (entry, cb) {
         if (err) return console.error(err);
 
         /** Сохраняем сорцы в стораж */
-        const {apps} = fs.data;
-        Object
-            .keys(apps)
-            .forEach(appHash => {
-                if (!appHash) return;
+        const apps = Object
+            .keys(fs.data.apps)
+            .filter(Boolean);
 
-                apps[appHash] = apps[appHash].toString();
+        apps
+            .forEach(appHash => {
+                localStorage[`app${appHash}`] = fs.data.apps[appHash].toString();
             });
-        localStorage['apps'] = JSON.stringify(apps);
 
         cb(apps);
     });

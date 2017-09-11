@@ -1,24 +1,16 @@
-import * as React from 'react';
 import { connect } from 'react-redux';
-import compile from '../Modules/Compile';
-const {Link} = require('react-router-dom');
+import AppListItem from './AppListItem';
 
 function AppList ({apps}) {
     return (
         <ul>
-            {Object
-                .keys(apps)
-                .filter(Boolean)
-                .map(appHash => {
-                    const appInstance = compile(apps[appHash]);
-                    const appName = appInstance.name;
-
-                    return (
-                        <li key={appHash}>
-                            <Link to={`/${appHash}`}>{appName}</Link>
-                        </li>
-                    )
-                })
+            {apps
+                .map(appHash => (
+                    <AppListItem
+                        key={appHash}
+                        appHash={appHash}
+                    />
+                ))
             }
         </ul>
     );
@@ -26,7 +18,7 @@ function AppList ({apps}) {
 
 function mapStateToProps({core}) {
     return {
-        apps: {...core.apps}
+        apps: core.apps
     };
 }
 

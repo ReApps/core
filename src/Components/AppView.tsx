@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import compile from '../Modules/Compile';
+import Apps from '../Modules/Apps';
 
-function AppView ({appSource}) {
-    const AppComponent = compile(appSource);
+function AppView ({appHash}) {
+    const AppComponent = Apps[appHash];
 
     return <AppComponent/>;
 }
 
-function mapStateToProps({core}, {match}) {
+function mapStateToProps(state, {match}) {
     return {
-        appSource: core.apps[match.params.appHash],
+        appHash: match.params.appHash,
     };
 }
 
