@@ -10,7 +10,7 @@ const InstallBtn = ({install}) => (
         color="blue"
         onClick={() => {
             const files = dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']})
-            files[0] && install(files[0]);
+            files && files[0] && install(files[0]);
         }}
     >
         Установить
