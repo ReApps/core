@@ -1,8 +1,14 @@
 const MemoryFS = require("memory-fs");
 const webpack = require("webpack");
+const path = require('path');
 const fs = new MemoryFS();
 
-module.exports = function (entry, cb) {
+module.exports = function (packageJsonPath, cb) {
+    // Читаем main
+    const relativeMainPath = require(packageJsonPath).main || 'index.js';
+    // Резолвим путь
+    const entry = path.join(path.dirname(packageJsonPath), relativeMainPath);
+
     const compiler = webpack({
         entry,
         output: {

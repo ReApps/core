@@ -9,7 +9,11 @@ const InstallBtn = ({install}) => (
     <Button
         color="blue"
         onClick={() => {
-            const files = dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']})
+            const files = dialog
+                .showOpenDialog({
+                    properties: ['openFile'],
+                    filters: [{name: 'package.json', extensions: ['json']}],
+                });
             files && files[0] && install(files[0]);
         }}
     >

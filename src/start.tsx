@@ -5,7 +5,7 @@ import Root from './Components/Root';
 
 const store = configureStore();
 
-let render = () => {
+const render = () => {
     ReactDOM.render(
         <Root store={store} history={history} />,
         document.getElementById('App')
